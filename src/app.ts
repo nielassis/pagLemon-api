@@ -5,8 +5,11 @@ import { setupSwagger } from "./docs/swagger";
 const app = express();
 app.use(express.json());
 
-app.use("/payments", paymentRouter);
+app.get("/", (req, res) => {
+  res.send("PagLemon API is running 🚀");
+});
 
+app.use("/payments", paymentRouter);
 setupSwagger(app);
 
 export default app;
