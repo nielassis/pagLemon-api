@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
   res.send("PagLemon API is running 🚀");
 });
 
-app.use("/payments", paymentRouter);
+app.use("/api/payments", paymentRouter);
 setupSwagger(app);
 
 export default app;

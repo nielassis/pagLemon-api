@@ -7,6 +7,8 @@
 
 API de pagamentos simples com logs de transações, construída com **Node.js**, **Express**, **PostgreSQL** e **Prisma**, com **deploy serverless** na Vercel.
 
+⚠ Tentei muito fazer com que swagger Ui funcionasse no deploy da vercel, mas não consegui, por isso se quiser ver a documentação swagger será necessário visualizar em localhost.
+
 ---
 
 ## Funcionalidades
@@ -41,11 +43,11 @@ CREATE TABLE TransictionLog (
 
 ## Endpoints
 
-| Método | Endpoint             | Descrição                                       | Body/Params                   |
-| ------ | -------------------- | ----------------------------------------------- | ----------------------------- |
-| POST   | `/payments`          | Criar um pagamento com status `waiting_payment` | `{ "amount_in_cents": 1200 }` |
-| PATCH  | `/payments/:id/paid` | Atualizar status do pagamento para `paid`       | -                             |
-| GET    | `/payments/:id/logs` | Listar logs de transações de um pagamento       | -                             |
+| Método | Endpoint                    | Descrição                                       | Body/Params                   |
+| ------ | --------------------------- | ----------------------------------------------- | ----------------------------- |
+| POST   | `/api/payments`             | Criar um pagamento com status `waiting_payment` | `{ "amount_in_cents": 1200 }` |
+| PATCH  | `/api/payments/:id/confirm` | Atualizar status do pagamento para `paid`       | -                             |
+| GET    | `/api/payments/:id/logs`    | Listar logs de transações de um pagamento       | -                             |
 
 ## Fluxo Lógico
 
@@ -105,17 +107,10 @@ npm run dev
 
 ## Deploy na Vercel
 
-Você pode acessar a api e documentação em
-API:
+Você pode acessar api em:
 
 ```
-https://paglemon-api.vercel.app
-```
-
-DOCS:
-
-```
-Swagger UI: `https://paglemon-api.vercel.app/docs`
+https://pag-lemon-api.vercel.app
 ```
 
 ## Tecnologias
