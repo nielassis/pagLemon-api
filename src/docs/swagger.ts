@@ -11,11 +11,13 @@ const options: swaggerJsdoc.Options = {
       description: "API de pagamentos simples com logs de transações",
     },
   },
-  apis: ["./src/routes/*.ts"],
+  apis: [`${process.cwd()}/src/routes/*.ts`],
 };
 
 const swaggerSpec = swaggerJsdoc(options);
 
 export function setupSwagger(app: Express) {
+  app.get("/swagger.json", (req, res) => res.json(swaggerSpec));
+
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 }
