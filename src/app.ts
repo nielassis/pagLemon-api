@@ -1,6 +1,6 @@
 import express from "express";
-import { setupSwagger } from "./docs/swagger";
 import paymentRouter from "./routes/payment.routes";
+import { setupSwagger } from "./docs/swagger";
 
 const app = express();
 app.use(express.json());
