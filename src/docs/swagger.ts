@@ -1,6 +1,8 @@
+import path from "path";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import { Express } from "express";
+import express from "express";
 
 const CSS_URL =
   "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
@@ -22,6 +24,7 @@ const swaggerSpec = swaggerJsdoc(options);
 export function setupSwagger(app: Express) {
   app.use(
     "/docs",
+    express.static(path.join(__dirname, "../node_modules/swagger-ui-dist")),
     swaggerUi.serve,
     swaggerUi.setup(swaggerSpec, {
       customCssUrl: CSS_URL,
