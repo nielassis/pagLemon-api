@@ -23,10 +23,12 @@ API de pagamentos simples com logs de transações, construída com **Node.js**,
 ## Tabelas no PostgreSQL
 
 ```sql
+CREATE TYPE payment_status AS ENUM ('paid', 'waiting_payment', 'failed');
+
 CREATE TABLE Payment (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   amount_in_cents INT NOT NULL,
-  status VARCHAR(20) NOT NULL DEFAULT 'waiting_payment',
+  status payment_status NOT NULL DEFAULT 'waiting_payment',
   createdAt TIMESTAMP DEFAULT now(),
   updatedAt TIMESTAMP DEFAULT now()
 );
